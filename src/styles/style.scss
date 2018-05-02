@@ -1,0 +1,43 @@
+@import "mixins";
+@import "flexboxgrid";
+@import url('https://fonts.googleapis.com/css?family=Muli:400,600,700');
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text:300i,400,400i');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Muli', sans-serif;
+}
+@import "nav";
+@import "header";
+@import "shop";
+@import "sidebar";
+@import "main";
+@import "products";
+@import "pagination";
+@import "tags";
+@import "sort";
+@import "discount";
+@import "footer";
+
+.italic {
+  font-style: italic;
+  font-family: inherit;
+}
+
+.icon {
+  height: 22px;
+  margin: 0 3px;
+}
+@include responsive('tablet-wide',max) {
+  .row {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@include responsive('tablet',max) {
+  html {
+    font-size: 14px;
+  }
+}

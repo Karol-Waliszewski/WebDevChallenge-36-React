@@ -1,0 +1,26 @@
+.footer {
+  @extend .container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: convertPixels(113,768,1vh);
+}
+
+.footer__rights {
+  //font-family: MaisonNeue;
+  color: #777;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+@include responsive('tablet',max){
+  .footer {
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    height: auto;
+  }
+  .footer__rights {
+  padding: convertPixels(26,700,1vh) 0;
+  }
+}
