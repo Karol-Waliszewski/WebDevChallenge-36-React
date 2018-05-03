@@ -4,6 +4,47 @@
 
 .products__column {
   @extend .col-xs-6;
+
+  &.medium {
+    @extend .col-md-4;
+    @include responsive('tablet', min) {
+      .product {
+        padding: convertREM(10) convertREM(21);
+        height: convertPixels(400,768,1vh);
+        max-height: 400px;
+      }
+
+      .product__name {
+        margin-bottom: convertREM(5);
+      }
+
+      .product__cart {
+        .text {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &.small {
+    @extend .col-md-3;
+    @include responsive('tablet', min) {
+      .product {
+        padding: convertREM(10) convertREM(11);
+        height: convertPixels(300,768,1vh);
+        max-height: 300px;
+      }
+
+      .product__name {
+        margin-bottom: convertREM(5);
+      }
+
+      .product__cart {
+        .text {
+          display: none;
+        }
+      }}
+  }
 }
 
 .product {

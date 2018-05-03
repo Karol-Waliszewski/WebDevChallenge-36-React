@@ -32,9 +32,11 @@ class Tags extends Component {
             max[i] = max[i + 1];
           }
           max[j] = counter[tag];
+          break;
         }
       }
     }
+
     for (let tag in counter) {
       if (max.includes(counter[tag])) {
         popular.push(tag);

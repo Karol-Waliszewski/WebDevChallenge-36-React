@@ -10,76 +10,26 @@ import Main from './Main';
 import Sort from './Sort';
 import Products from './Products';
 
-// Images
-import humidifierImage from '../assets/product-1.jpg';
-import scissorsImage from '../assets/product-2.jpg';
-import watchImage from '../assets/product-3.jpg';
-import sweeperImage from '../assets/product-4.jpg';
-import bulbImage from '../assets/product-5.jpg';
-import teapotImage from '../assets/product-6.jpg';
+// JSON
+const ProductsArray = require('../products.json');
 
 class App extends Component {
   constructor() {
     super();
-    this.products = [
-      {
-        name: "Bottle Humidifier",
-        price: 69,
-        image: humidifierImage,
-        isNew: true,
-        category: 'Dining',
-        brand: 'Braun',
-        size: 'medium',
-        tags: ['White', 'Accessories']
-      }, {
-        name: "Flower Scissors",
-        price: 159.99,
-        image: scissorsImage,
-        category: 'Living',
-        brand: 'Banshu Hamono',
-        size: 'small',
-        tags: ['Black', 'Accessories']
-      }, {
-        name: "Grey Watch",
-        price: 215,
-        image: watchImage,
-        category: 'Accessories',
-        brand: 'Henry Wilson',
-        size: 'small',
-        tags: ['Minimalism', 'Grey', 'Accessories']
-      }, {
-        name: "Sweeper and Funnel",
-        price: 59,
-        image: sweeperImage,
-        isFavourite: true,
-        category: 'Technics',
-        brand: 'Elevenplus',
-        size: 'medium',
-        tags: ['Simple', 'White', 'Black']
-      }, {
-        name: "White Bulb",
-        price: 349,
-        image: bulbImage,
-        category: 'Lighting',
-        brand: 'Banshu Hamono',
-        size: 'medium',
-        tags: ['Simple', 'White']
-      }, {
-        name: "Teapot",
-        price: 55,
-        image: teapotImage,
-        category: 'Furniture',
-        brand: 'Field',
-        size: 'medium',
-        tags: ['Simple', 'Minimalism', 'Black']
-      }
-    ]
+    this.products = ProductsArray.map((product, index) => Object.assign({
+      ID: index
+    }, product));
     this.state = {
-      filteredProducts: this.products
-    }
+      products: this.products,
+      //filter:{},
+      filteredProducts: this.products,
+      gridSize: 'medium'
+    };
     // Easier binding
     this.filterBy = this.filterBy.bind(this);
     this.resetFilter = this.resetFilter.bind(this);
+    this.setGridSize = this.setGridSize.bind(this);
+    this.toggleFavourite = this.toggleFavourite.bind(this);
   }
 
   resetFilter() {
@@ -91,7 +41,38 @@ class App extends Component {
     this.setState({filteredProducts: filtered});
   }
 
+  // FOR FILTER STACKING
+  // filter() {
+  //   for (key in this.state.filter) {
+  //     let filtered = this.products.filter(product => product[key] === this.state.filter[key]);
+  //     this.setState({filteredProducts: filtered});
+  //   }
+  // }
+
+  toggleFavourite(id) {
+
+    console.log(id)
+  }
+
+  sortNew(a, b) {
+    if (a.isNew && b.isNew)
+      return 0;
+    if (a.isNew && !b.isNew)
+      return -1;
+    if (!a.isNew && b.isNew)
+      return 1;
+
+    return 0;  
+    }
+
+  setGridSize(size) {
+    this.setState({gridSize: size});
+  }
+
   render() {
+    var {
+      state
+    } = this;
     return (<div className="shop">
       <Sidebar>
         <Categories products={this.products} filterBy={this.filterBy} resetFilter={this.resetFilter}/>
@@ -106,8 +87,8 @@ class App extends Component {
         <Tags products={this.products}/>
       </Sidebar>
       <Main>
-        <Sort/>
-        <Products products={this.state.filteredProducts}/>
+        <Sort results={state.filteredProducts.length} setGridSize={this.setGridSize}/>
+        <Products gridSize={state.gridSize} products={state.filteredProducts.sort(this.sortNew)} toggleFavourite={this.toggleFavourite}/>
       </Main>
     </div>);
   }
