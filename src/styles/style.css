@@ -2172,12 +2172,12 @@
     font-size: 1.2rem; } }
 
 .shop {
-  margin-top: 10.67708vh;
-  margin-bottom: 7.8125vh; }
+  padding-top: 10.67708vh;
+  padding-bottom: 7.8125vh; }
 
 @media only screen and (max-width: 767px) {
   .shop {
-    margin-bottom: 5.20833vh; } }
+    padding-bottom: 5.20833vh; } }
 
 .sidebar__heading {
   font-size: 1.5rem;

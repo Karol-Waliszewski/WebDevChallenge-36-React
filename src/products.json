@@ -113,4 +113,349 @@
   "brand": "Field",
   "size": "medium",
   "tags": ["Simple", "Minimalism", "Black"]
+}, {
+  "name": "Bottle Humidifier",
+  "price": 69,
+  "image": "product-1.jpg",
+  "imageAlt": "Image of white Bottle Humidifier",
+  "isNew": true,
+  "category": "Dining",
+  "brand": "Braun",
+  "size": "medium",
+  "tags": ["White", "Accessories"]
+}, {
+  "name": "Flower Scissors",
+  "price": 159.99,
+  "image": "product-2.jpg",
+  "imageAlt": "Scissors",
+  "category": "Living",
+  "brand": "Banshu Hamono",
+  "size": "small",
+  "tags": ["Black", "Accessories"]
+}, {
+  "name": "Grey Watch",
+  "price": 215,
+  "image": "product-3.jpg",
+  "category": "Accessories",
+  "brand": "Henry Wilson",
+  "size": "small",
+  "tags": ["Minimalism", "Grey", "Accessories"]
+}, {
+  "name": "Sweeper and Funnel",
+  "price": 59,
+  "image": "product-4.jpg",
+  "isFavourite": true,
+  "category": "Technics",
+  "brand": "Elevenplus",
+  "size": "medium",
+  "tags": ["Simple", "White", "Black"]
+}, {
+  "name": "White Bulb",
+  "price": 349,
+  "image": "product-5.jpg",
+  "category": "Lighting",
+  "isNew": true,
+  "brand": "Banshu Hamono",
+  "size": "medium",
+  "tags": ["Simple", "White"]
+}, {
+  "name": "Bottle Humidifier",
+  "price": 69,
+  "image": "product-1.jpg",
+  "imageAlt": "Image of white Bottle Humidifier",
+  "isNew": true,
+  "category": "Dining",
+  "brand": "Braun",
+  "size": "medium",
+  "tags": ["White", "Accessories"]
+}, {
+  "name": "Modern Lamp",
+  "price": 12,
+  "image": "product-5.jpg",
+  "category": "Technics",
+  "brand": "Henry Wilson",
+  "size": "medium",
+  "tags": ["White"]
+}, {
+  "name": "Modern Lamp",
+  "price": 512,
+  "image": "product-5.jpg",
+  "category": "Technics",
+  "brand": "Banshu Hamono",
+  "size": "small",
+  "tags": ["Simple"]
+}, {
+  "name": "Teapot",
+  "price": 55,
+  "image": "product-6.jpg",
+  "imageAlt": "Dark minimalist teapot",
+  "category": "Furniture",
+  "isFavourite": true,
+  "brand": "Field",
+  "size": "medium",
+  "tags": ["Simple", "Minimalism", "Black"]
+}, {
+  "name": "Modern Lamp",
+  "price": 9999,
+  "image": "product-5.jpg",
+  "isNew": true,
+  "category": "Lighting",
+  "brand": "Bruno Banani",
+  "size": "medium",
+  "tags": ["Simple"]
+}, {
+  "name": "White Ball",
+  "price": 91,
+  "image": "product-5.jpg",
+  "category": "Lighting",
+  "brand": "Henry Wilson",
+  "size": "small",
+  "tags": ["Simple"]
+}, {
+  "name": "Modern Lamp",
+  "price": 49,
+  "image": "product-5.jpg",
+  "category": "Lighting",
+  "brand": "Braun",
+  "size": "medium",
+  "tags": ["Lighting"]
+}, {
+  "name": "Teapot",
+  "price": 55,
+  "image": "product-6.jpg",
+  "imageAlt": "Dark minimalist teapot",
+  "category": "Furniture",
+  "brand": "Field",
+  "size": "medium",
+  "tags": ["Simple", "Minimalism", "Black"]
+}, {
+  "name": "Bottle Humidifier",
+  "price": 69,
+  "image": "product-1.jpg",
+  "imageAlt": "Image of white Bottle Humidifier",
+  "isNew": true,
+  "category": "Dining",
+  "brand": "Braun",
+  "size": "medium",
+  "tags": ["White", "Accessories"]
+}, {
+  "name": "Flower Scissors",
+  "price": 159.99,
+  "image": "product-2.jpg",
+  "imageAlt": "Scissors",
+  "category": "Living",
+  "brand": "Banshu Hamono",
+  "size": "small",
+  "tags": ["Black", "Accessories"]
+}, {
+  "name": "Grey Watch",
+  "price": 215,
+  "image": "product-3.jpg",
+  "category": "Accessories",
+  "brand": "Henry Wilson",
+  "size": "small",
+  "tags": ["Minimalism", "Grey", "Accessories"]
+}, {
+  "name": "Sweeper and Funnel",
+  "price": 59,
+  "image": "product-4.jpg",
+  "isFavourite": true,
+  "category": "Technics",
+  "brand": "Elevenplus",
+  "size": "medium",
+  "tags": ["Simple", "White", "Black"]
+}, {
+  "name": "White Bulb",
+  "price": 349,
+  "image": "product-5.jpg",
+  "category": "Lighting",
+  "isNew": true,
+  "brand": "Banshu Hamono",
+  "size": "medium",
+  "tags": ["Simple", "White"]
+}, {
+  "name": "Bottle Humidifier",
+  "price": 69,
+  "image": "product-1.jpg",
+  "imageAlt": "Image of white Bottle Humidifier",
+  "isNew": true,
+  "category": "Dining",
+  "brand": "Braun",
+  "size": "medium",
+  "tags": ["White", "Accessories"]
+}, {
+  "name": "Modern Lamp",
+  "price": 12,
+  "image": "product-5.jpg",
+  "category": "Technics",
+  "brand": "Henry Wilson",
+  "size": "medium",
+  "tags": ["White"]
+}, {
+  "name": "Modern Lamp",
+  "price": 512,
+  "image": "product-5.jpg",
+  "category": "Technics",
+  "brand": "Banshu Hamono",
+  "size": "small",
+  "tags": ["Simple"]
+}, {
+  "name": "Teapot",
+  "price": 55,
+  "image": "product-6.jpg",
+  "imageAlt": "Dark minimalist teapot",
+  "category": "Furniture",
+  "isFavourite": true,
+  "brand": "Field",
+  "size": "medium",
+  "tags": ["Simple", "Minimalism", "Black"]
+}, {
+  "name": "Modern Lamp",
+  "price": 9999,
+  "image": "product-5.jpg",
+  "isNew": true,
+  "category": "Lighting",
+  "brand": "Bruno Banani",
+  "size": "medium",
+  "tags": ["Simple"]
+}, {
+  "name": "White Ball",
+  "price": 91,
+  "image": "product-5.jpg",
+  "category": "Lighting",
+  "brand": "Henry Wilson",
+  "size": "small",
+  "tags": ["Simple"]
+}, {
+  "name": "Modern Lamp",
+  "price": 49,
+  "image": "product-5.jpg",
+  "category": "Lighting",
+  "brand": "Braun",
+  "size": "medium",
+  "tags": ["Lighting"]
+}, {
+  "name": "Teapot",
+  "price": 55,
+  "image": "product-6.jpg",
+  "imageAlt": "Dark minimalist teapot",
+  "category": "Furniture",
+  "brand": "Field",
+  "size": "medium",
+  "tags": ["Simple", "Minimalism", "Black"]
+}, {
+  "name": "Bottle Humidifier",
+  "price": 69,
+  "image": "product-1.jpg",
+  "imageAlt": "Image of white Bottle Humidifier",
+  "isNew": true,
+  "category": "Dining",
+  "brand": "Braun",
+  "size": "medium",
+  "tags": ["White", "Accessories"]
+}, {
+  "name": "Flower Scissors",
+  "price": 159.99,
+  "image": "product-2.jpg",
+  "imageAlt": "Scissors",
+  "category": "Living",
+  "brand": "Banshu Hamono",
+  "size": "small",
+  "tags": ["Black", "Accessories"]
+}, {
+  "name": "Grey Watch",
+  "price": 215,
+  "image": "product-3.jpg",
+  "category": "Accessories",
+  "brand": "Henry Wilson",
+  "size": "small",
+  "tags": ["Minimalism", "Grey", "Accessories"]
+}, {
+  "name": "Sweeper and Funnel",
+  "price": 59,
+  "image": "product-4.jpg",
+  "isFavourite": true,
+  "category": "Technics",
+  "brand": "Elevenplus",
+  "size": "medium",
+  "tags": ["Simple", "White", "Black"]
+}, {
+  "name": "White Bulb",
+  "price": 349,
+  "image": "product-5.jpg",
+  "category": "Lighting",
+  "isNew": true,
+  "brand": "Banshu Hamono",
+  "size": "medium",
+  "tags": ["Simple", "White"]
+}, {
+  "name": "Bottle Humidifier",
+  "price": 69,
+  "image": "product-1.jpg",
+  "imageAlt": "Image of white Bottle Humidifier",
+  "isNew": true,
+  "category": "Dining",
+  "brand": "Braun",
+  "size": "medium",
+  "tags": ["White", "Accessories"]
+}, {
+  "name": "Modern Lamp",
+  "price": 12,
+  "image": "product-5.jpg",
+  "category": "Technics",
+  "brand": "Henry Wilson",
+  "size": "medium",
+  "tags": ["White"]
+}, {
+  "name": "Modern Lamp",
+  "price": 512,
+  "image": "product-5.jpg",
+  "category": "Technics",
+  "brand": "Banshu Hamono",
+  "size": "small",
+  "tags": ["Simple"]
+}, {
+  "name": "Teapot",
+  "price": 55,
+  "image": "product-6.jpg",
+  "imageAlt": "Dark minimalist teapot",
+  "category": "Furniture",
+  "isFavourite": true,
+  "brand": "Field",
+  "size": "medium",
+  "tags": ["Simple", "Minimalism", "Black"]
+}, {
+  "name": "Modern Lamp",
+  "price": 9999,
+  "image": "product-5.jpg",
+  "isNew": true,
+  "category": "Lighting",
+  "brand": "Bruno Banani",
+  "size": "medium",
+  "tags": ["Simple"]
+}, {
+  "name": "White Ball",
+  "price": 91,
+  "image": "product-5.jpg",
+  "category": "Lighting",
+  "brand": "Henry Wilson",
+  "size": "small",
+  "tags": ["Simple"]
+}, {
+  "name": "Modern Lamp",
+  "price": 49,
+  "image": "product-5.jpg",
+  "category": "Lighting",
+  "brand": "Braun",
+  "size": "medium",
+  "tags": ["Lighting"]
+}, {
+  "name": "Teapot",
+  "price": 55,
+  "image": "product-6.jpg",
+  "imageAlt": "Dark minimalist teapot",
+  "category": "Furniture",
+  "brand": "Field",
+  "size": "medium",
+  "tags": ["Simple", "Minimalism", "Black"]
 }]

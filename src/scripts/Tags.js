@@ -48,8 +48,9 @@ class Tags extends Component {
   renderTags(tags) {
     let renderedTags = [];
     for (let tag in tags) {
-      renderedTags.push(<li className="tags__item" key={tags[tag]}>
-        <button className="tags__button">{tags[tag]}</button>
+      renderedTags.push(
+      <li className="tags__item" key={tags[tag]}>
+        <button className="tags__button" onClick={()=>{this.props.filterBy('tags',tags[tag])}}>{tags[tag]}</button>
       </li>);
     }
     return renderedTags;
