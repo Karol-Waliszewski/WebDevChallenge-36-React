@@ -61,7 +61,9 @@ class App extends Component {
 
   setFilter(key, value) {
     this.filterBy(key, value);
+    this.changePage(1);
     this.combineUrl({query: `?${key}=${value}`, path: '/'});
+
   }
 
   filterBy(key, value) {
@@ -124,13 +126,13 @@ class App extends Component {
     this.setState({gridSize: size});
   }
 
-  changePage(value) {
-    var curr = Number(this.state.currentPage) + Number(value);
+  changePage(page) {
+    var curr = Number(page);
     curr = (curr < 1)
       ? 1
       : curr;
     this.setState({currentPage: curr});
-    this.combineUrl({path:`/${curr}`});
+    this.combineUrl({path: `/${(curr == 1) ? '' : curr}`});
     this.scrollToShop();
   }
 
@@ -158,8 +160,12 @@ class App extends Component {
             <Main>
               <Sort results={state.filteredProducts.length} setGridSize={this.setGridSize} startIndex={state.currentPage}/>
               <Products gridSize={state.gridSize} products={state.filteredProducts.sort(this.sortNew)} toggleFavourite={this.toggleFavourite} startIndex={state.currentPage}/>
-              <button onClick={()=>{this.changePage(-1)}}>back</button>
-              <button onClick={()=>{this.changePage(1)}}>next</button>
+              <button onClick={() => {
+                  this.changePage(state.currentPage - 1)
+                }}>back</button>
+              <button onClick={() => {
+                  this.changePage(state.currentPage + 1)
+                }}>next</button>
             </Main>
           </div>)}/>
       </Switch>
