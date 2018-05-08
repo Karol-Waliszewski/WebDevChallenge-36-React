@@ -43,7 +43,8 @@
         .text {
           display: none;
         }
-      }}
+      }
+    }
   }
 }
 
@@ -148,8 +149,14 @@
 }
 @include responsive('tablet-wide',max) {
   .product {
+    margin-bottom: 6vh;
+  }
+}
+@include responsive('tablet',max) {
+  .product {
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 2vh;
     padding-top: 5px;
     padding-bottom: 0;
     overflow: hidden;

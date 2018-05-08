@@ -4,19 +4,23 @@ import Product from './Product';
 class Products extends Component {
   render() {
 
+    var {
+      props
+    } = this;
+
     var pageProducts = [];
 
-    var gap = (this.props.products.length < 12 * (this.props.startIndex))
-      ? this.props.products.length
-      : 12 * (this.props.startIndex);
+    var gap = (props.products.length < props.productsOnPage * (props.startIndex))
+      ? props.products.length
+      : props.productsOnPage * (props.startIndex);
 
-    for (let i = 12 * (this.props.startIndex - 1); i < gap; i++) {
-      pageProducts.push(this.props.products[i])
+    for (let i = props.productsOnPage * (props.startIndex - 1); i < gap; i++) {
+      pageProducts.push(props.products[i])
     }
 
     var filteredProducts = pageProducts.map((product, index) =>
-    <div className={"products__column " + this.props.gridSize} key={index}>
-      <Product {...product} toggleFavourite={this.props.toggleFavourite}/>
+    <div className={"products__column " + props.gridSize} key={index}>
+      <Product {...product} toggleFavourite={props.toggleFavourite}/>
     </div>);
 
     return (<div className="products">

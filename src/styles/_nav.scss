@@ -128,7 +128,7 @@
     font-size: 1.7rem;
   }
 }
-@include responsive("tablet",max) {
+@include responsive("tablet-wide",max) {
   .navigation--footer {
     width: 100%;
     height: convertPixels(90,700,1vh);

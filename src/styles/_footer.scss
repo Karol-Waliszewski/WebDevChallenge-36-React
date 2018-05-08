@@ -14,11 +14,13 @@
   letter-spacing: 0.5px;
 }
 
-@include responsive('tablet',max){
+@include responsive('tablet-wide',max){
   .footer {
     flex-direction: column-reverse;
     justify-content: flex-end;
     height: auto;
+    margin: 0;
+    width: 100%;
   }
   .footer__rights {
   padding: convertPixels(26,700,1vh) 0;

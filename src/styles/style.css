@@ -11,7 +11,7 @@
   padding-right: 0.5rem;
   padding-left: 0.5rem; }
 
-.row, .slider__wrapper, .shop, .main__header, .products, .product__properties, .product__info, .discount__content {
+.row, .slider__wrapper, .shop, .main__header, .products, .product__properties, .product__info, .pagination, .discount__content {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -37,7 +37,7 @@
   margin-right: -0.5rem;
   margin-left: -0.5rem; }
 
-.row.reverse, .reverse.slider__wrapper, .reverse.shop, .reverse.main__header, .reverse.products, .reverse.product__properties, .reverse.product__info, .reverse.discount__content {
+.row.reverse, .reverse.slider__wrapper, .reverse.shop, .reverse.main__header, .reverse.products, .reverse.product__properties, .reverse.product__info, .reverse.pagination, .reverse.discount__content {
   -webkit-box-direction: reverse;
   -webkit-box-orient: horizontal;
   -webkit-flex-direction: row-reverse;
@@ -507,7 +507,7 @@
   justify-content: center;
   text-align: center; }
 
-.end-xs {
+.end-xs, .pagination {
   -webkit-box-pack: end;
   -ms-flex-pack: end;
   -webkit-justify-content: flex-end;
@@ -1067,7 +1067,7 @@
     -ms-flex-preferred-size: 8.33333%;
     flex-basis: 8.33333%;
     max-width: 8.33333%; }
-  .col-md-2 {
+  .col-md-2, .sort__dropdown {
     box-sizing: border-box;
     -webkit-box-flex: 0;
     -webkit-flex-grow: 0;
@@ -1085,7 +1085,7 @@
     -ms-flex-preferred-size: 16.66667%;
     flex-basis: 16.66667%;
     max-width: 16.66667%; }
-  .col-md-3, .products__column.small, .pagination {
+  .col-md-3, .products__column.small {
     box-sizing: border-box;
     -webkit-box-flex: 0;
     -webkit-flex-grow: 0;
@@ -1121,7 +1121,7 @@
     -ms-flex-preferred-size: 33.33333%;
     flex-basis: 33.33333%;
     max-width: 33.33333%; }
-  .col-md-5, .main__resultsInfo, .sort, .discount__heading {
+  .col-md-5, .main__resultsInfo, .discount__heading {
     box-sizing: border-box;
     -webkit-box-flex: 0;
     -webkit-flex-grow: 0;
@@ -1139,7 +1139,7 @@
     -ms-flex-preferred-size: 41.66667%;
     flex-basis: 41.66667%;
     max-width: 41.66667%; }
-  .col-md-6, .discount__form {
+  .col-md-6, .pagination, .sort, .discount__form {
     box-sizing: border-box;
     -webkit-box-flex: 0;
     -webkit-flex-grow: 0;
@@ -2067,7 +2067,7 @@
     color: #000;
     font-size: 1.7rem; } }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1023px) {
   .navigation--footer {
     width: 100%;
     height: 12.85714vh;
@@ -2315,13 +2315,21 @@
 .main__grid--big div {
   grid-template-columns: 1fr 1fr; }
 
+.main__grid--big.active span {
+  background: darkgray; }
+
 .main__grid--medium div {
   grid-template-columns: 1fr 1fr 1fr; }
+
+.main__grid--medium.active span {
+  background: darkgray; }
 
 .main__grid--small {
   margin-left: auto; }
   .main__grid--small div {
     grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .main__grid--small.active span {
+    background: darkgray; }
 
 @media only screen and (max-width: 1023px) {
   .main {
@@ -2421,8 +2429,13 @@
 
 @media only screen and (max-width: 1023px) {
   .product {
+    margin-bottom: 6vh; } }
+
+@media only screen and (max-width: 767px) {
+  .product {
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 2vh;
     padding-top: 5px;
     padding-bottom: 0;
     overflow: hidden;
@@ -2456,29 +2469,55 @@
     margin-top: 45vw; } }
 
 .pagination {
-  margin-left: auto; }
+  margin-left: auto;
+  margin-bottom: 1rem; }
+  @media only screen and (max-width: 479px) {
+    .pagination {
+      display: none; } }
 
 .pagination__links li {
   display: inline-block; }
 
 .pagination__link {
   color: #666;
+  cursor: pointer;
   font-size: 1.5rem;
   text-align: center;
   text-decoration: none;
   transition: 250ms;
-  font-weight: 600; }
+  font-weight: 600;
+  background: none;
+  border: none;
+  margin: 0 6px; }
   .pagination__link.active {
     color: #000000; }
   .pagination__link:hover {
     color: #000000; }
+  .pagination__link img {
+    width: 18px;
+    height: 18px; }
 
 @media only screen and (max-width: 767px) {
   .pagination {
     margin-top: 1rem;
     margin-right: 1rem; }
   .pagination__link {
-    font-size: 1.25rem; } }
+    font-size: 1.25rem; }
+    .pagination__link img {
+      width: 14px;
+      height: 14px; } }
+
+.loadmore {
+  font-size: 1.5rem;
+  color: #000;
+  margin-top: 2.1875rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  display: block; }
 
 .tags__list {
   list-style-type: none;
@@ -2509,7 +2548,44 @@
     display: none; } }
 
 .sort__heading {
-  font-size: 1.5rem; }
+  font-size: 1.5rem;
+  display: inline-block; }
+
+.sort__dropdown {
+  background: none;
+  border: none;
+  position: relative;
+  padding: 0; }
+  .sort__dropdown:focus {
+    outline: none; }
+    .sort__dropdown:focus .sort__options {
+      display: block; }
+
+.sort__button {
+  display: block;
+  font-size: 1rem;
+  margin-left: 2px;
+  padding: 6px;
+  cursor: pointer;
+  transform: rotate(90deg); }
+
+.sort__options {
+  position: absolute;
+  list-style-type: none;
+  border-radius: 1px;
+  display: none;
+  text-align: left;
+  background: #fff;
+  z-index: 10;
+  padding: 0;
+  box-shadow: 0 0 1px rgba(34, 25, 25, 0.4); }
+
+.sort__option {
+  font-size: 1.2rem;
+  padding: 0.4rem 1rem;
+  cursor: pointer; }
+  .sort__option.active {
+    background: #f5f5f5; }
 
 .discount {
   height: 28.64583vh;
@@ -2593,11 +2669,13 @@
   font-weight: 600;
   letter-spacing: 0.5px; }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1023px) {
   .footer {
     flex-direction: column-reverse;
     justify-content: flex-end;
-    height: auto; }
+    height: auto;
+    margin: 0;
+    width: 100%; }
   .footer__rights {
     padding: 3.71429vh 0; } }
 
@@ -2610,7 +2688,7 @@
   margin: 0 3px; }
 
 @media only screen and (max-width: 1023px) {
-  .row, .slider__wrapper, .shop, .main__header, .products, .product__properties, .product__info, .discount__content {
+  .row, .slider__wrapper, .shop, .main__header, .products, .product__properties, .product__info, .pagination, .discount__content {
     margin-left: auto;
     margin-right: auto; } }
 

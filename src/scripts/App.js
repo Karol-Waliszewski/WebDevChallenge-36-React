@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom';
+import MediaQuery from 'react-responsive';
 
 // Components
 import Sidebar from './Sidebar';
@@ -11,7 +12,9 @@ import ColorFilter from './filters/ColorFilter';
 import Tags from './Tags';
 import Main from './Main';
 import Sort from './Sort';
+import Pagination from './Pagination';
 import Products from './Products';
+import LoadMore from './LoadMore';
 
 // JSON
 const ProductsArray = require('../products.json');
@@ -22,10 +25,18 @@ class App extends Component {
     this.products = ProductsArray.map((product, index) => Object.assign({
       ID: index
     }, product));
+    this.sortings = {
+      'A-Z': this.sortAlphabetical,
+      'Z-A': this.sortAlphabeticalReverse,
+      'Newest': this.sortNew,
+      'Favourite': this.sortFavourite
+    }
     this.state = {
       filteredProducts: this.products,
       gridSize: 'medium',
-      currentPage: 1
+      currentPage: 1,
+      productsOnPage: 12,
+      sortBy: 'Newest'
     };
     // Easier binding
     //  this.filterBy = this.filterBy.bind(this);
@@ -33,6 +44,9 @@ class App extends Component {
     this.setGridSize = this.setGridSize.bind(this);
     this.toggleFavourite = this.toggleFavourite.bind(this);
     this.setFilter = this.setFilter.bind(this);
+    this.setSorting = this.setSorting.bind(this);
+    this.changePage = this.changePage.bind(this);
+    this.loadMore = this.loadMore.bind(this);
   }
 
   componentDidMount() {
@@ -49,12 +63,13 @@ class App extends Component {
     }
 
     if (match.params.page) {
-      this.setState({currentPage: match.params.page});
+      this.changePage(match.params.page)
     }
   }
 
   resetFilter() {
     this.setState({filteredProducts: this.products});
+    this.changePage(1);
     this.combineUrl({query: ' ', path: '/'});
     this.scrollToShop();
   }
@@ -71,7 +86,7 @@ class App extends Component {
       if (!product[key]) {
         return false;
       }
-
+      3
       if (Array.isArray(product[key])) {
         return product[key].includes(value);
       }
@@ -87,12 +102,12 @@ class App extends Component {
     var {
       location
     } = this.props;
-    console.log(query)
+
     if (!query)
-      query = location.search;
+      query = location.search || '';
 
     if (!path)
-      query = location.pathname;
+      path = location.pathname | '';
 
     this.props.history.push({search: query, pathname: path});
   }
@@ -110,6 +125,7 @@ class App extends Component {
     console.log(id)
   }
 
+  // Sortings
   // TODO remove items swapping
   sortNew(a, b) {
     if (a.isNew && b.isNew)
@@ -118,12 +134,46 @@ class App extends Component {
       return -1;
     if (!a.isNew && b.isNew)
       return 1;
-
     return 0;
+  }
+
+  sortFavourite(a, b) {
+    if (a.isFavourite && b.isFavourite)
+      return 0;
+    if (a.isFavourite && !b.isFavourite)
+      return -1;
+    if (!a.isFavourite && b.isFavourite)
+      return 1;
+    return this.sortAlphabetical(a, b);
+  }
+
+  sortAlphabetical(a, b) {
+    return a.name.toLowerCase() < b.name.toLowerCase()
+      ? -1
+      : a.name.toLowerCase() > b.name.toLowerCase()
+        ? 1
+        : 0;
+  }
+  sortAlphabeticalReverse(a, b) {
+    return b.name.toLowerCase() < a.name.toLowerCase()
+      ? -1
+      : b.name.toLowerCase() > a.name.toLowerCase()
+        ? 1
+        : 0;
+  }
+
+  setSorting(sorting) {
+    this.setState({sortBy: sorting});
   }
 
   setGridSize(size) {
     this.setState({gridSize: size});
+  }
+
+  loadMore(more) {
+    this.setState({
+      productsOnPage: this.state.productsOnPage + Number(more)
+    });
   }
 
   changePage(page) {
@@ -132,7 +182,11 @@ class App extends Component {
       ? 1
       : curr;
     this.setState({currentPage: curr});
-    this.combineUrl({path: `/${(curr == 1) ? '' : curr}`});
+    this.combineUrl({
+      path: `/${ (curr == 1)
+        ? ''
+        : curr}`
+    });
     this.scrollToShop();
   }
 
@@ -141,6 +195,8 @@ class App extends Component {
       state,
       props
     } = this;
+
+    var lastPage = Math.ceil(state.filteredProducts.length / state.productsOnPage);
 
     return (<Router>
       <Switch>
@@ -158,14 +214,18 @@ class App extends Component {
               <Tags products={this.products} filterBy={this.setFilter}/>
             </Sidebar>
             <Main>
-              <Sort results={state.filteredProducts.length} setGridSize={this.setGridSize} startIndex={state.currentPage}/>
-              <Products gridSize={state.gridSize} products={state.filteredProducts.sort(this.sortNew)} toggleFavourite={this.toggleFavourite} startIndex={state.currentPage}/>
-              <button onClick={() => {
-                  this.changePage(state.currentPage - 1)
-                }}>back</button>
-              <button onClick={() => {
-                  this.changePage(state.currentPage + 1)
-                }}>next</button>
+
+              <Sort gridSize={state.gridSize} productsOnPage={state.productsOnPage} results={state.filteredProducts.length} setGridSize={this.setGridSize} startIndex={state.currentPage} sortBy={state.sortBy} sortings={this.sortings} setSorting={this.setSorting}/>
+              <MediaQuery query="(min-device-width: 1024px)">
+                <Pagination currentPage={state.currentPage} lastPage={lastPage} changePage={this.changePage}/>
+              </MediaQuery>
+              <Products productsOnPage={state.productsOnPage} gridSize={state.gridSize} products={state.filteredProducts.sort(this.sortings[state.sortBy].bind(this))} toggleFavourite={this.toggleFavourite} startIndex={state.currentPage}/>
+              <MediaQuery query="(min-device-width: 1024px)">
+                <Pagination currentPage={state.currentPage} lastPage={lastPage} changePage={this.changePage}/>
+              </MediaQuery>
+              <MediaQuery query="(max-device-width: 1023px)">
+                <LoadMore more={state.productsOnPage} loadMore={this.loadMore} onPage={state.filteredProducts.length}/>
+              </MediaQuery>
             </Main>
           </div>)}/>
       </Switch>

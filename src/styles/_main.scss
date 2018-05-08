@@ -47,6 +47,12 @@
   div {
     grid-template-columns: 1fr 1fr;
   }
+
+  &.active {
+    span {
+      background: darken(#f5f5f5,30%);
+    }
+  }
 }
 
 .main__grid--medium {
@@ -55,6 +61,12 @@
   div {
     grid-template-columns: 1fr 1fr 1fr;
   }
+
+  &.active {
+    span {
+      background: darken(#f5f5f5,30%);
+    }
+  }
 }
 
 .main__grid--small {
@@ -62,6 +74,12 @@
 
   div {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  &.active {
+    span {
+      background: darken(#f5f5f5,30%);
+    }
   }
   margin-left: auto;
 }

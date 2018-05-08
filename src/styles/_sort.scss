@@ -1,7 +1,55 @@
 .sort {
-  @extend .col-md-5;
+  @extend .col-md-6;
 }
 
 .sort__heading {
   font-size: 1.5rem;
+  display: inline-block;
+}
+
+.sort__dropdown {
+  @extend .col-md-2;
+  background: none;
+  border: none;
+  position: relative;
+padding: 0;
+  &:focus {
+    outline: none;
+    .sort__button {
+      //outline: 1px solid #f39c12;
+    }
+    .sort__options {
+      display: block;
+    }
+  }
+}
+
+.sort__button {
+  display: block;
+  font-size: 1rem;
+  margin-left: 2px;
+  padding: 6px;
+  cursor: pointer;
+  transform: rotate(90deg);
+}
+
+.sort__options {
+  position: absolute;
+  list-style-type: none;
+  border-radius: 1px;
+  display: none;
+  text-align: left;
+  background: #fff;
+  z-index: 10;
+  padding: 0;
+  box-shadow: 0 0 1px rgba(34, 25, 25, 0.4);
+}
+
+.sort__option {
+  font-size: 1.2rem;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  &.active {
+    background: #f5f5f5;
+  }
 }

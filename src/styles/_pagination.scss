@@ -1,6 +1,12 @@
 .pagination {
-  @extend .col-md-3;
+  @extend .row;
+  @extend .end-xs;
+  @extend .col-md-6;
   margin-left: auto;
+  margin-bottom: 1rem;
+  @include responsive('phone-wide',max) {
+    display: none;
+  }
 }
 
 .pagination__links {
@@ -10,13 +16,16 @@
 }
 
 .pagination__link {
-  //font-family: MaisonNeue;
   color: #666;
+  cursor: pointer;
   font-size: convertREM(24);
   text-align: center;
   text-decoration: none;
   transition: 250ms;
   font-weight: 600;
+  background: none;
+  border: none;
+  margin: 0 6px;
 
   &.active {
     color: #000000;
@@ -24,6 +33,11 @@
 
   &:hover {
     color: #000000;
+  }
+
+  img {
+    width: 18px;
+    height: 18px;
   }
 }
 @include responsive('tablet',max) {
@@ -34,5 +48,10 @@
 
   .pagination__link {
     font-size: convertREM(20);
+
+    img {
+      width: 14px;
+      height: 14px;
+    }
   }
 }
