@@ -12,13 +12,14 @@ import App from './App.js';
 
 class Layout extends Component {
   render() {
+    console.log(process.env.PUBLIC_URL)
     return (<div>
       <Nav/>
       <Header/>
 
       <Router>
         <Switch>
-          <Route path="/:page?" exact={true} component={App}/>
+          <Route path="/:page?" component={App}/>
           <Route path="/" render={() => (<p style={{
                 margin: '2rem',
                 textAlign: 'center'

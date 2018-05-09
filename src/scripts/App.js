@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import MediaQuery from 'react-responsive';
 
 // Components
@@ -114,10 +114,12 @@ class App extends Component {
 
   scrollToShop() {
     var $shop = document.querySelector('.shop');
-    if (window.scrollY > $shop.offsetTop + 150) {
-      $shop.scrollIntoView({behavior: 'smooth', block: "start"});
-    } else if (window.scrollY === 0) {
-      $shop.scrollIntoView(true);
+    if ($shop) {
+      if (window.scrollY > $shop.offsetTop + 150) {
+        $shop.scrollIntoView({behavior: 'smooth', block: "start"});
+      } else if (window.scrollY === 0) {
+        $shop.scrollIntoView(true);
+      }
     }
   }
 
@@ -198,38 +200,34 @@ class App extends Component {
 
     var lastPage = Math.ceil(state.filteredProducts.length / state.productsOnPage);
 
-    return (<Router>
-      <Switch>
-        <Route path="/" render={() => (<div className="shop">
-            <Sidebar>
-              <Categories products={this.products} filterBy={this.setFilter} resetFilter={this.resetFilter}/>
-              <hr className="sidebar__line"/>
-              <Filter>
-                <PriceFilter/>
-                <ColorFilter/>
-                <StandardFilter property="size" heading="size" products={this.products} filterBy={this.setFilter}/>
-                <StandardFilter property="brand" heading="brands" products={this.products} filterBy={this.setFilter}/>
-              </Filter>
-              <hr className="sidebar__line"/>
-              <Tags products={this.products} filterBy={this.setFilter}/>
-            </Sidebar>
-            <Main>
+    return (<div className="shop">
+      <Sidebar>
+        <Categories products={this.products} filterBy={this.setFilter} resetFilter={this.resetFilter}/>
+        <hr className="sidebar__line"/>
+        <Filter>
+          <PriceFilter/>
+          <ColorFilter/>
+          <StandardFilter property="size" heading="size" products={this.products} filterBy={this.setFilter}/>
+          <StandardFilter property="brand" heading="brands" products={this.products} filterBy={this.setFilter}/>
+        </Filter>
+        <hr className="sidebar__line"/>
+        <Tags products={this.products} filterBy={this.setFilter}/>
+      </Sidebar>
+      <Main>
 
-              <Sort gridSize={state.gridSize} productsOnPage={state.productsOnPage} results={state.filteredProducts.length} setGridSize={this.setGridSize} startIndex={state.currentPage} sortBy={state.sortBy} sortings={this.sortings} setSorting={this.setSorting}/>
-              <MediaQuery query="(min-device-width: 1024px)">
-                <Pagination currentPage={state.currentPage} lastPage={lastPage} changePage={this.changePage}/>
-              </MediaQuery>
-              <Products productsOnPage={state.productsOnPage} gridSize={state.gridSize} products={state.filteredProducts.sort(this.sortings[state.sortBy].bind(this))} toggleFavourite={this.toggleFavourite} startIndex={state.currentPage}/>
-              <MediaQuery query="(min-device-width: 1024px)">
-                <Pagination currentPage={state.currentPage} lastPage={lastPage} changePage={this.changePage}/>
-              </MediaQuery>
-              <MediaQuery query="(max-device-width: 1023px)">
-                <LoadMore more={state.productsOnPage} loadMore={this.loadMore} onPage={state.filteredProducts.length}/>
-              </MediaQuery>
-            </Main>
-          </div>)}/>
-      </Switch>
-    </Router>);
+        <Sort gridSize={state.gridSize} productsOnPage={state.productsOnPage} results={state.filteredProducts.length} setGridSize={this.setGridSize} startIndex={state.currentPage} sortBy={state.sortBy} sortings={this.sortings} setSorting={this.setSorting}/>
+        <MediaQuery query="(min-device-width: 1024px)">
+          <Pagination currentPage={state.currentPage} lastPage={lastPage} changePage={this.changePage}/>
+        </MediaQuery>
+        <Products productsOnPage={state.productsOnPage} gridSize={state.gridSize} products={state.filteredProducts.sort(this.sortings[state.sortBy].bind(this))} toggleFavourite={this.toggleFavourite} startIndex={state.currentPage}/>
+        <MediaQuery query="(min-device-width: 1024px)">
+          <Pagination currentPage={state.currentPage} lastPage={lastPage} changePage={this.changePage}/>
+        </MediaQuery>
+        <MediaQuery query="(max-device-width: 1023px)">
+          <LoadMore more={state.productsOnPage} loadMore={this.loadMore} onPage={state.filteredProducts.length}/>
+        </MediaQuery>
+      </Main>
+    </div>);
   }
 }
 
